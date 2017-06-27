@@ -9,8 +9,7 @@ gulp.task('import', function() {
   return gulp.src('./src/**/*.js')
         .pipe(gulpImports())
         .pipe(rename({
-            suffix: ".min",
-            dirname:''
+            suffix: ".min"
           }))
         .pipe(gulp.dest('./dist'));
 });
