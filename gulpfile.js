@@ -42,14 +42,3 @@ gulp.task('uglify-gulp', function() {
 gulp.task('build', function() {
   runSequence('clean', 'import', ['uglify-templater', 'uglify-jquery', 'uglify-gulp']);
 });
-
-gulp.task('templater', function () {
-    var templater = require('./dist/templater.gulp.min.js');
-    gulp.src('./src/index.html').pipe(templater({
-      tags: {
-        'panel': '<div class="panel"><div class="panel-heading">{{heading}}</div><div class="panel-body">{{html}}</div></div>'
-      },
-      htmlPlaceholder: "html",
-      bracketsRegexp: /\{\{(.*?)\}\}/g
-    })).pipe(gulp.dest('./dist'));
-});
