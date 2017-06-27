@@ -47,7 +47,6 @@ gulp.task('templater', function () {
     var templater = require('./dist/templater.gulp.min.js');
     gulp.src('./src/index.html').pipe(templater({
       tags: {
-        //'panel': __dirname+'/src/gulp-templater/template.html'
         'panel': '<div class="panel"><div class="panel-heading">{{heading}}</div><div class="panel-body">{{html}}</div></div>'
       },
       htmlPlaceholder: "html",
