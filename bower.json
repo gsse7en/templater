@@ -1,0 +1,22 @@
+{
+  "name": "templater-tests",
+  "description": "Tests for templater task",
+  "main": "test.js",
+  "authors": [
+    "Oleh birjukov"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "chai": "~3.4.0",
+    "mocha": "~2.3.3",
+    "jquery": "^3.1.0"
+  }
+}

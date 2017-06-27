@@ -1,0 +1,40 @@
+{
+  "name": "templater-tests",
+  "version": "1.0.0",
+  "description": "Tests for templater task",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Oleh birjukov",
+  "license": "ISC",
+  "dependencies": {
+    "gulp-mocha-phantomjs": "^0.11.0"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "dom-parser": "^0.1.5",
+    "gulp": "^3.9.1",
+    "gulp-imports": "0.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-templater": "",
+    "gulp-uglifyjs": "^0.6.2",
+    "jQuery": "^1.7.4",
+    "pump": "^1.0.2",
+    "run-sequence": "^1.2.2",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gsse7en/justcoded_test.git"
+  },
+  "keywords": [
+    "templater",
+    "gulp",
+    "mocha"
+  ],
+  "bugs": {
+    "url": "https://github.com/gsse7en/justcoded_test/issues"
+  },
+  "homepage": "https://github.com/gsse7en/justcoded_test#readme"
+}
