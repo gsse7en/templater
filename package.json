@@ -1,0 +1,34 @@
+{
+  "name": "gulp-templater",
+  "version": "0.1.0",
+  "description": "Templater to change custom tags in HTML pages",
+  "main": "dist/templater.min.js",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "author": "Fedor Latyshev <flatyshev@justcoded.co>",
+  "license": "ISC",
+  "dependencies": {
+    "dom-parser": "^0.1.5"
+  },
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-imports": "0.0.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglifyjs": "^0.6.2",
+    "run-sequence": "^1.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gsse7en/templater.git"
+  },
+  "keywords": [
+    "templater",
+    "gulp",
+    "HTML"
+  ],
+  "bugs": {
+    "url": "https://github.com/gsse7en/templater/issues"
+  }
+}
