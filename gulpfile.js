@@ -39,14 +39,15 @@ gulp.task('uglify-gulp', function() {
 });
 
 gulp.task('build', function() {
-  runSequence('clean', 'import', ['uglify-templater', 'uglify-jquery', 'uglify-gulp']);
+  runSequence('clean', 'import', ['uglify-templater', 'uglify-jquery', 'uglify-gulp'], 'templater');
 });
 
 gulp.task('templater', function () {
-    var templater = require('./dist/templater.gulp.js');
+    var templater = require('./dist/templater.gulp.min.js');
     gulp.src('./src/index.html').pipe(templater({
       tags: {
-        'panel': __dirname+'/gulp_custom_plugins/gulp-templater/template.html'
+        //'panel': __dirname+'/gulp_custom_plugins/gulp-templater/template.html'
+        'panel': '<div class="panel"><div class="panel-heading">{{heading}}</div><div class="panel-body">{{html}}</div></div>'
       },
       htmlPlaceholder: "html",
       bracketsRegexp: /\{\{(.*?)\}\}/g
