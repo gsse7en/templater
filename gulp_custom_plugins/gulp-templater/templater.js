@@ -27,16 +27,24 @@ var Templater = function (options) {
         }
     };
 
+    var replaceCustomTag = function(el, findTag, template, options) {
+        return el.replace(findTag[0].outerHTML, processTemplate(findTag[0], template, options));
+    };
+
+    var parseFromHtmlOrFile = function(options, findTag, dom, template) {
+        if (options.parseHtmlPage) {
+                findTag[0].outerHTML = replaceCustomTag(findTag[0].outerHTML, findTag, template, options);       
+            } else {
+                dom.rawHTML = replaceCustomTag(dom.rawHTML, findTag, template, options);
+        }
+    };
+
     var processAllCurrentTags = function (options, tagName, template) {
         var dom = getDOM(options);
         var findTag = dom.getElementsByTagName(tagName);
 
         if (findTag.length) {
-            if (options.parseHtmlPage) {
-                findTag[0].outerHTML = findTag[0].outerHTML.replace(findTag[0].outerHTML, processTemplate(findTag[0], template, options));       
-            } else {
-                dom.rawHTML = dom.rawHTML.replace(findTag[0].outerHTML, processTemplate(findTag[0], template, options));
-            }
+            parseFromHtmlOrFile(options, findTag, dom, template);
             processAllCurrentTags(options, tagName, template);
         }
     };
