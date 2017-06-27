@@ -6,7 +6,7 @@ var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
  
 gulp.task('import', function() {
-  return gulp.src('./gulp_custom_plugins/gulp-templater/*.js')
+  return gulp.src('./src/**/*.js')
         .pipe(gulpImports())
         .pipe(rename({
             suffix: ".min",
@@ -39,14 +39,14 @@ gulp.task('uglify-gulp', function() {
 });
 
 gulp.task('build', function() {
-  runSequence('clean', 'import', ['uglify-templater', 'uglify-jquery', 'uglify-gulp'], 'templater');
+  runSequence('clean', 'import', ['uglify-templater', 'uglify-jquery', 'uglify-gulp']);
 });
 
 gulp.task('templater', function () {
     var templater = require('./dist/templater.gulp.min.js');
     gulp.src('./src/index.html').pipe(templater({
       tags: {
-        //'panel': __dirname+'/gulp_custom_plugins/gulp-templater/template.html'
+        //'panel': __dirname+'/src/gulp-templater/template.html'
         'panel': '<div class="panel"><div class="panel-heading">{{heading}}</div><div class="panel-body">{{html}}</div></div>'
       },
       htmlPlaceholder: "html",

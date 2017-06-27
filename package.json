@@ -1,12 +1,12 @@
 {
   "name": "templater-tests",
   "version": "1.0.0",
-  "description": "Tests for templater task",
-  "main": "test.js",
+  "description": "Templater to change custom tags",
+  "main": "dist/templater.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Oleh birjukov",
+  "author": "Fedor Latyshev",
   "license": "ISC",
   "dependencies": {
     "gulp-mocha-phantomjs": "^0.11.0"
@@ -26,7 +26,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gsse7en/justcoded_test.git"
+    "url": "git+https://github.com/gsse7en/templater.git"
   },
   "keywords": [
     "templater",
@@ -34,7 +34,7 @@
     "mocha"
   ],
   "bugs": {
-    "url": "https://github.com/gsse7en/justcoded_test/issues"
+    "url": "https://github.com/gsse7en/templater/issues"
   },
-  "homepage": "https://github.com/gsse7en/justcoded_test#readme"
+  "homepage": "https://github.com/gsse7en/templater#readme"
 }
