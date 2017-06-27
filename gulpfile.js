@@ -10,6 +10,7 @@ gulp.task('import', function() {
         .pipe(gulpImports())
         .pipe(rename({
             suffix: ".min",
+            dirname:''
           }))
         .pipe(gulp.dest('./dist'));
 });
