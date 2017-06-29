@@ -17,7 +17,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "src"
+    "src",
     "package-lock.json",
     "gulpfile.js",
     "package.json",
