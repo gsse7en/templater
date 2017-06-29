@@ -1,7 +1,7 @@
 {
   "name": "gulp-templater",
   "description": "Templater to change custom tags in HTML pages",
-  "version": "^0.1.0",
+  "version": "0.2.1",
   "main": "dist/templater.min.js",
   "authors": [
     "Fedor Latyshev <flatyshev@justcoded.co>"
