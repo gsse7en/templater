@@ -1,0 +1,26 @@
+{
+  "name": "gulp-templater",
+  "description": "Templater to change custom tags in HTML pages",
+  "version": "^0.1.0",
+  "main": "dist/templater.min.js",
+  "authors": [
+    "Fedor Latyshev <flatyshev@justcoded.co>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "templater",
+    "gulp",
+    "HTML"
+  ],
+  "homepage": "https://github.com/gsse7en/templater",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src"
+    "package-lock.json",
+    "gulpfile.js",
+    "package.json",
+    "README.md"
+  ]
+}
