@@ -1,14 +1,12 @@
-//imports('./templater.js');
+import templater from "./templater.min";
 
-(function ($) {
-"use strict";
-
+(($ => {
     $.fn.templater = function (options) {
-        var settings = $.extend({}, $.fn.templater.defaults, options);
-        var dom = $(document);
+        const settings = $.extend({}, $.fn.templater.defaults, options);
+        const dom = $(document);
         dom.rawHTML = document.getElementsByTagName('html')[0].innerHTML;
-        return this.each(function () {
-            Templater(settings);
+        return this.each(() => {
+            templater.run(settings);
         });
     };
 
@@ -17,5 +15,4 @@
         htmlPlaceholder: "html",
         bracketsRegexp: /\{\{(.*?)\}\}/g
     };
-
-}(jQuery));
+})(jQuery));

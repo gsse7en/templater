@@ -1,19 +1,19 @@
 'use strict';
 
-var Stream = require('stream');
-var Path = require('path');
-var DomParser = require('dom-parser');
-var parser = new DomParser();
-var fs = require('fs');
+import Stream from 'stream';
+import Path from 'path';
+import DomParser from 'dom-parser';
+import fs from 'fs';
+import templater from "./templater.min";
+const parser = new DomParser();
 
 function gulpTemplater(options) {
-  var stream = new Stream.Transform({objectMode: true});
+  const stream = new Stream.Transform({objectMode: true});
 
-  stream._transform = function(file, unused, callback) {
-    var parsedfile = file.contents.toString();
-    //imports('./templater.js');
+  stream._transform = (file, unused, callback) => {
+    const parsedfile = file.contents.toString();
     options.document = parser.parseFromString(parsedfile);
-    var base64data = new Buffer(Templater(options), 'binary').toString('base64');
+    const base64data = new Buffer(templater.run(options), 'binary').toString('base64');
     file.contents = new Buffer(base64data, 'base64');
     callback(null, file);
   };

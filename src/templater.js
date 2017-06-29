@@ -1,8 +1,7 @@
-var Templater = function (options) {
-    "use strict";
+class Templater {
 
-    var getAttributeValue = function (refinedAttribute, tag, options) {
-        var value = "";
+    getAttributeValue(refinedAttribute, tag, options) {
+        let value = "";
 
         if (refinedAttribute === options.htmlPlaceholder) {
             value = tag.innerHTML;
@@ -11,58 +10,57 @@ var Templater = function (options) {
         }
 
         return value;
-    };
+    }
 
-    var processTemplate = function (tag, template, options) {
-        return template.replace(options.bracketsRegexp, function (rawAttribute, refinedAttribute) {
-            return getAttributeValue(refinedAttribute, tag, options);
-        });
-    };
+    processTemplate(tag, template, options) {
+        return template.replace(options.bracketsRegexp, (rawAttribute, refinedAttribute) => this.getAttributeValue(refinedAttribute, tag, options));
+    }
 
-    var getDOM = function(options) {
+    getDOM(options) {
         if (options.parseHtmlPage) {
             return window.document;       
         } else {
             return options.document;
         }
-    };
+    }
 
-    var replaceCustomTag = function(el, findTag, template, options) {
-        return el.replace(findTag[0].outerHTML, processTemplate(findTag[0], template, options));
-    };
+    replaceCustomTag(el, findTag, template, options) {
+        return el.replace(findTag[0].outerHTML, this.processTemplate(findTag[0], template, options));
+    }
 
-    var parseFromHtmlOrFile = function(options, findTag, dom, template) {
+    parseFromHtmlOrFile(options, findTag, dom, template) {
         if (options.parseHtmlPage) {
-                findTag[0].outerHTML = replaceCustomTag(findTag[0].outerHTML, findTag, template, options);       
+                findTag[0].outerHTML = this.replaceCustomTag(findTag[0].outerHTML, findTag, template, options);       
             } else {
-                dom.rawHTML = replaceCustomTag(dom.rawHTML, findTag, template, options);
+                dom.rawHTML = this.replaceCustomTag(dom.rawHTML, findTag, template, options);
         }
-    };
+    }
 
-    var processAllCurrentTags = function (options, tagName, template) {
-        var dom = getDOM(options);
-        var findTag = dom.getElementsByTagName(tagName);
+    processAllCurrentTags(options, tagName, template) {
+        const dom = this.getDOM(options);
+        const findTag = dom.getElementsByTagName(tagName);
 
         if (findTag.length) {
-            parseFromHtmlOrFile(options, findTag, dom, template);
-            processAllCurrentTags(options, tagName, template);
+            this.parseFromHtmlOrFile(options, findTag, dom, template);
+            this.processAllCurrentTags(options, tagName, template);
         }
-    };
+    }
 
-    return function(options) {
-        for (var key in options.tags) {
+    run(options) {
+        for (const key in options.tags) {
             if (options.tags.hasOwnProperty(key)) {
                 try {
-                    processAllCurrentTags(options, key, fs.readFileSync(options.tags[key], 'utf8'));
+                    this.processAllCurrentTags(options, key, fs.readFileSync(options.tags[key], 'utf8'));
                 }
                 catch (err) {
-                    processAllCurrentTags(options, key, options.tags[key]);
+                    this.processAllCurrentTags(options, key, options.tags[key]);
                 }
             }
         }
         if (!options.parseHtmlPage) {
-            var dom = getDOM(options);
+            const dom = this.getDOM(options);
             return dom.rawHTML;
         }
-    }(options); 
+    }
 };
+module.exports = new Templater();
