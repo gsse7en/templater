@@ -63,4 +63,7 @@ class Templater {
         }
     }
 };
-module.exports = new Templater();
+const templater = new Templater;
+if (typeof module !== 'undefined') {
+    module.exports = templater;
+}

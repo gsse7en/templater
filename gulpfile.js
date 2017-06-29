@@ -5,6 +5,7 @@ var uglify = require('gulp-uglifyjs');
 var rename = require("gulp-rename");
 var runSequence = require('run-sequence');
 var babel = require('gulp-babel');
+var mochaPhantomJS = require('gulp-mocha-phantomjs');
  
 gulp.task('import', function() {
   return gulp.src('./src/**/*.js')
@@ -40,6 +41,12 @@ gulp.task('uglify-gulp', function() {
   gulp.src('./dist/templater.gulp.min.js')
     .pipe(uglify())
     .pipe(gulp.dest('./dist'));
+});
+
+gulp.task('test-stage-6', function () {
+  return gulp
+    .src('spec/stage-6/index.html')
+    .pipe(mochaPhantomJS());
 });
 
 gulp.task('build', function() {
