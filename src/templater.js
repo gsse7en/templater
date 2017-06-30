@@ -1,6 +1,6 @@
-class Templater {
+export class Templater {
 
-    getAttributeValue(refinedAttribute, tag, options) {
+    static getAttributeValue(refinedAttribute, tag, options) {
         let value = "";
 
         if (refinedAttribute === options.htmlPlaceholder) {
@@ -12,11 +12,11 @@ class Templater {
         return value;
     }
 
-    processTemplate(tag, template, options) {
+    static processTemplate(tag, template, options) {
         return template.replace(options.bracketsRegexp, (rawAttribute, refinedAttribute) => this.getAttributeValue(refinedAttribute, tag, options));
     }
 
-    getDOM(options) {
+    static getDOM(options) {
         if (options.parseHtmlPage) {
             return window.document;       
         } else {
@@ -24,11 +24,11 @@ class Templater {
         }
     }
 
-    replaceCustomTag(el, findTag, template, options) {
+    static replaceCustomTag(el, findTag, template, options) {
         return el.replace(findTag[0].outerHTML, this.processTemplate(findTag[0], template, options));
     }
 
-    parseFromHtmlOrFile(options, findTag, dom, template) {
+    static parseFromHtmlOrFile(options, findTag, dom, template) {
         if (options.parseHtmlPage) {
                 findTag[0].outerHTML = this.replaceCustomTag(findTag[0].outerHTML, findTag, template, options);       
             } else {
@@ -36,7 +36,7 @@ class Templater {
         }
     }
 
-    processAllCurrentTags(options, tagName, template) {
+    static processAllCurrentTags(options, tagName, template) {
         const dom = this.getDOM(options);
         const findTag = dom.getElementsByTagName(tagName);
 
@@ -46,7 +46,7 @@ class Templater {
         }
     }
 
-    run(options) {
+    static run(options) {
         for (const key in options.tags) {
             if (options.tags.hasOwnProperty(key)) {
                 try {
@@ -63,7 +63,3 @@ class Templater {
         }
     }
 };
-const templater = new Templater;
-if (typeof module !== 'undefined') {
-    module.exports = templater;
-}
