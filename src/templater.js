@@ -1,4 +1,4 @@
-export class Templater {
+class Templater {
 
     static getAttributeValue(refinedAttribute, tag, options) {
         let value = "";
@@ -62,4 +62,4 @@ export class Templater {
             return dom.rawHTML;
         }
     }
-};
+}

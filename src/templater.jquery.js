@@ -1,4 +1,4 @@
-import {Templater} from "./templater.min";
+//import("./templater.js");
 
 (($ => {
     $.fn.templater = function (options) {
